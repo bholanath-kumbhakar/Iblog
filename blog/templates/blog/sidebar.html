@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .navtext{
+          color: blanchedalmond;
+              }
+    </style>
+
+</head>
+<body>
+        <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+            <div class="">
+                <a href="#" class="d-flex align-items-center text-white text-decoration-none ">
+                    <img src="https://github.com/mdo.png" default="default.jpg" alt="profile image" width="90" height="90" class="rounded-circle mt-1">
+                    <span class="d-none d-sm-inline mx-1">{{user.username}}</span>
+                </a>
+            </div>
+
+            <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start " id="menu">
+                <li class="nav-item">
+                    <a href="/" class="nav-link align-middle px-0">
+                        <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline navtext">Home</span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="#" class="nav-link px-0 align-middle">
+                        <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline navtext">Posts</span></a>
+                </li>
+                <li>
+                    <a href="{% url 'profile' request.user.id %}" class="nav-link px-0 align-middle">
+                        <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline navtext">Profile</span> </a>
+                </li>
+                
+                <li>
+                    <a href="#" class="nav-link px-0 align-middle">
+                        <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline navtext">Settings</span> </a>
+                </li>
+                <li>
+                    <a href="{% url 'signout' %}" class="nav-link px-0 align-middle">
+                        <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline navtext">Logout</span> </a>
+                </li>
+            </ul>
+            <hr>
+            
+        </div>
+
+</body>
+</html>

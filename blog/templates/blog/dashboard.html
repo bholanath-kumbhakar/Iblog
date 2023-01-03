@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
+  </head>
+  <style>
+      .imagesize{
+          height: 125px;
+      }
+      .posthead{
+
+          background-color: beige;
+          text-align: center;
+
+      }
+      .description{
+        display: block;
+        width: 200px;
+        overflow: hidden;
+        /* white-space: nowrap; */
+        text-overflow: ellipsis;
+        height: 100px;
+      }
+      .title{
+        display: block;
+        width: 200px;
+        overflow: hidden;
+        /* white-space: nowrap; */
+        text-overflow: ellipsis;
+        height: 80px;
+      }
+      .edit_icon{
+        font-size: 24px;
+        color: green;
+        margin-left: 35px;
+        margin-right: 35px;
+      }
+      .action{
+          text-align: center;
+      }
+
+      .navtext{
+          color: blanchedalmond;
+              }
+    .mainbody{
+        margin-top:50px;
+    }
+  </style>
+  <body>
+      <div class="row">
+        {% include 'blog/base.html' %}
+      </div>
+
+    <div class="mainbody">
+        <div class="row flex-nowrap">
+            <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+                {% include 'blog/sidebar.html' %}
+            </div>
+            <div class="col py-3">
+                <div class="posthead"> <h1> Users All Posts</h1></div>
+                <div>
+                    <a href="{% url 'addpost' %}" class="btn btn-success btn-lg active" role="button" aria-pressed="true">Add Post</a>
+                </div>
+                <div>
+                    <div class="container my-5">
+                        <div class="row d-flex justify-content-center main_container">
+                            <div class="col-12">
+                                <div id="carousel" class="carousel slide" data-ride="carousel">
+                
+                                    <div class="carousel-inner">
+                                        <div class="carousel-item active">
+                                            <div class="row">
+                                                {% for post in userpost%}
+                                                <div class="col-12 col-md-6 col-xl-3 mb-4">
+                                                    <div class="card mr-3">
+                                                      
+                                                        <img src="{{post.image.url}}" class="card-img-top imagesize" alt="post image">
+                                                        
+                                                        <div class="card-body">
+                                                            <div class="title">
+                                                                <h5 class="card-title">{{post.title}}</h5>
+                                                            </div>
+                                                            <div class="description">
+                                                                <p class="card-text">{{post.description}}</p>
+                                                            </div>
+                                                            <div class="action">
+                                                                <a href="{% url 'postdetails' post.id %}"> <i class="fas fa-eye" style='font-size:24px; color:green'></i></a>
+                                                                <a href="{% url 'editpost' post.id %}"> <i class='fas fa-edit edit_icon' ></i></a>
+                                                            <a href="{% url 'deletepost' post.id %}"><i class='fas fa-trash' style='font-size:25px;color:red'></i></a>
+                                                            </div>
+                                                            
+                                                            
+                                                        </div>
+                                                    </div>                                  
+                                                </div>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+  </body>
+</html>
+
+
